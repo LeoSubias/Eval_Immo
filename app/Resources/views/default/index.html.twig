@@ -1,5 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends ['base.html.twig', 'annonce/index.html.twig', 'type_annonce/index.html.twig'] %}
 
-{% block body %}
-    <p>hello my friend </p>
+{% block body %} 
+<section class="container-fluid hello"> 
+    <h1 class="text-center">Annonces list</h1>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        {% for annonce in annonces %}
+<div class="col-xs-4 col-sm-4">
+    <div class="thumbnail test">
+        <img src="{{ vich_uploader_asset(annonce, 'photoFile') }}">
+        <a href="annonce/{{ annonce.id }}">
+        <div class="caption">
+        <h3>{{ annonce.titre }}</h3>
+            <tr>
+                <td>Prix : {{ annonce.prix }} €</td><br>
+                <td>Nb de piece : {{ annonce.nbPieces }}</td><br>
+                <td>{{ annonce.type_annonce }}</td>
+            </tr>
+        </div>
+        </a>
+    </div>    
+</div>
+
+        {% endfor %}
+    </div>
+</div>    
+</section>
+
+
+
+
 {% endblock %}

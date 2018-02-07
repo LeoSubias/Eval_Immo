@@ -1,0 +1,42 @@
+{% extends ['base.html.twig', 'annonce/index.html.twig', 'type_annonce/index.html.twig'] %}
+
+{% block body %}
+
+    <section class="container-fluid hello"> 
+    <h1 class="text-center">Annonces list</h1>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+<div class="col-xs-12 col-sm-12">
+    <div class="thumbnail test">
+        <img src="{{ vich_uploader_asset(annonce, 'photoFile') }}">        
+        <div class="caption text">
+        <h3>{{ annonce.titre }}</h3>
+            <tr>
+                <th>Annonce N°</th>
+                <td>{{ annonce.id }}</td><br>
+            </tr>
+            <tr>
+                <th>Titre : </th>
+                <td>{{ annonce.titre }}</td><br>
+            </tr>
+            <tr>
+                <th>Prix : </th>
+                <td>{{ annonce.prix }}</td><br>
+            </tr>
+            <tr>
+                <th>Nbpieces : </th>
+                <td>{{ annonce.nbPieces }} €</td><br>
+            </tr>
+            <tr>
+                <th>Description : </th>
+                <td>{{ annonce.description }}</td><br>
+            </tr>
+        </div>
+    </div>    
+</div>
+
+    </div>
+</div>    
+</section>
+
+{% endblock %}

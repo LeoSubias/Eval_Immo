@@ -42,11 +42,6 @@ class User
      */
     private $phone;
 
-    public function __toString()
-    {    
-        return $this->getNom()." ".$this->getPrenom(). " ". $this->getPhone();
-    }
-
 
     /**
      * Get id
@@ -130,3 +125,4 @@ class User
         return $this->phone;
     }
 }
+

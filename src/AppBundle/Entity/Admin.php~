@@ -5,17 +5,17 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
+ * Admin
  *
- * @ORM\Table(name="usr_user")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ORM\Table(name="adm_admin")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AdminRepository")
  */
-class User
+class Admin
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="usr_oid", type="integer")
+     * @ORM\Column(name="adm_oid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,28 +24,23 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_nom", type="string", length=255)
+     * @ORM\Column(name="adm_nom", type="string", length=255)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_prenom", type="string", length=255)
+     * @ORM\Column(name="adm_prenom", type="string", length=255)
      */
     private $prenom;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="usr_phone", type="integer")
+     * @ORM\Column(name="adm_phone", type="integer")
      */
     private $phone;
-
-    public function __toString()
-    {    
-        return $this->getNom()." ".$this->getPrenom(). " ". $this->getPhone();
-    }
 
 
     /**
@@ -63,7 +58,7 @@ class User
      *
      * @param string $nom
      *
-     * @return User
+     * @return Admin
      */
     public function setNom($nom)
     {
@@ -87,7 +82,7 @@ class User
      *
      * @param string $prenom
      *
-     * @return User
+     * @return Admin
      */
     public function setPrenom($prenom)
     {
@@ -111,7 +106,7 @@ class User
      *
      * @param integer $phone
      *
-     * @return User
+     * @return Admin
      */
     public function setPhone($phone)
     {
@@ -130,3 +125,4 @@ class User
         return $this->phone;
     }
 }
+

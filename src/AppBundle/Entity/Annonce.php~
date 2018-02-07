@@ -3,12 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Annonce
- * @Vich\Uploadable
+ *
  * @ORM\Table(name="ann_annonce")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AnnonceRepository")
  */
@@ -58,25 +56,11 @@ class Annonce
      */
     private $photo;
 
-    /**
-    * @Vich\UploadableField(mapping="photo", fileNameProperty="photo")
-    * 
-    * @var File
-    */
-    private $photoFile;
-
-    /**
-    * @ORM\Column(type="datetime", nullable=true)
-    *
-    * @var \DateTime
-    */
-    private $updatedAt;
-
       /** 
      * @ORM\ManyToOne(targetEntity="Type_Annonce")
      * @ORM\JoinColumn(name="typ_oid", referencedColumnName="typ_oid")
      */
-    public $type_annonce;
+    private $type_annonce;
 
       /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -89,11 +73,6 @@ class Annonce
      * @ORM\JoinColumn(name="adm_oid", referencedColumnName="adm_oid")
      */
     private $admin;
-
-    public function __toString()
-    {    
-        return $this->getprix()." ".$this->getTitre(). " ".$this->getDescription(). " ".$this->getNbPieces(). " ". $this->getPhoto(). " ". (string) $this->getTypeAnnonce(). " ". $this->getUser(). " ". $this->getAdmin() ;
-    }
 
     /**
      * Get id
@@ -232,7 +211,7 @@ class Annonce
      *
      * @return Annonce
      */
-    public function setType_Annonce(\AppBundle\Entity\Type_Annonce $typeAnnonce = null)
+    public function setTypeAnnonce(\AppBundle\Entity\Type_Annonce $typeAnnonce = null)
     {
         $this->type_annonce = $typeAnnonce;
 
@@ -244,7 +223,7 @@ class Annonce
      *
      * @return \AppBundle\Entity\Type_Annonce|null
      */
-    public function getType_Annonce()
+    public function getTypeAnnonce()
     {
         return $this->type_annonce;
     }
@@ -295,27 +274,5 @@ class Annonce
     public function getAdmin()
     {
         return $this->admin;
-    }
-
-    /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile 
-     *
-     * @return Photo
-    */
-    public function setPhotoFile(File $photo = null)
-    {
-        $this->photoFile = $photo;
-
-        if ($photo) 
-            $this->updatedAt = new \DateTimeImmutable();
-        
-        return $this;
-    }
-    /**
-     * @return File|null
-     */
-    public function getPhotoFile()
-    {
-        return $this->photoFile;
     }
 }
